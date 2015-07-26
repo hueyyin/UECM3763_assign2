@@ -13,7 +13,7 @@ n = n_partitions = 1000 # 1000 partitions within interval
 # Create Brownian paths
 
 t = p.linspace(0, 3, n+1) # Partition [0,3] to 1000 partitions
-dB = p.randn(n_path, n+1) / p.sqrt(n);
+dB = p.randn(n_path, n+1) / p.sqrt(n/3);
 dB[:,0] = 0 # First column of dB is 0
 B = dB.cumsum(axis=1) # Cummulative sum
 
@@ -34,6 +34,7 @@ S_plot= S[0:5]
 p.plot(t,S_plot.transpose());
 p.xlabel('Time, $t$');
 p.ylabel('Stock prices, $S_t$');
+p.title('5 Realizations of Geometric Brownian Motion with ' '\n with $\mu$ = ' + str(mu) +' and $\sigma$ = ' + str(sigma) + '\n'  )
 p.show()
 
 
